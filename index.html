@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,7 +41,7 @@
     <div class="container navbar">
       <a href="#hero" class="brand-logo" aria-label="Ammar Yasser Homepage">
         <div class="brand-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M14 2L3 13L7 17L18 6L22 2H14Z" fill="#54C5F8"/>
             <path d="M14 10.5L7 17.5L11 21.5L18 14.5L22 10.5H14Z" fill="#29B6F6"/>
             <path d="M11 21.5L7 25.5L11 29.5L15 25.5L11 21.5Z" fill="#01579B"/>
@@ -62,26 +62,54 @@
         <a href="#contact" class="nav-link">Contact</a>
       </nav>
 
-      <!-- Desktop Header CTA -->
-      <a href="#contact" class="nav-cta">
-        <span>Get In Touch</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-          <polyline points="12 5 19 12 12 19"></polyline>
-        </svg>
-      </a>
+      <!-- Desktop Header Actions: Theme Toggle & CV Download -->
+      <div class="nav-actions">
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle-btn" aria-label="Toggle dark/light theme" title="Toggle Theme">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
 
-      <!-- Mobile Hamburger Toggle -->
-      <button class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav-menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+        <!-- Download CV Button -->
+        <a href="assets/Ammar_Yasser_Flutter_Developer_CV.pdf" download="Ammar_Yasser_Flutter_Developer_CV.pdf" target="_blank" class="nav-cv-btn" title="Download Official CV (PDF)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>CV</span>
+        </a>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
     </div>
   </header>
 
   <!-- Mobile Navigation Drawer -->
   <div id="mobile-nav-menu" class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+      <span style="font-weight: 700; color: var(--text-primary);">Navigation</span>
+      <button class="theme-toggle-btn" aria-label="Toggle dark/light theme" title="Toggle Theme">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"></circle>
+        </svg>
+      </button>
+    </div>
     <a href="#hero" class="nav-link">Home</a>
     <a href="#about" class="nav-link">About</a>
     <a href="#architecture" class="nav-link">Architecture</a>
@@ -89,7 +117,18 @@
     <a href="#skills" class="nav-link">Skills</a>
     <a href="#experience" class="nav-link">Experience</a>
     <a href="#contact" class="nav-link">Contact</a>
-    <a href="mailto:ammar.yasser20175@gmail.com" class="btn btn-primary" style="margin-top: 20px;">Email Me Directly</a>
+    
+    <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 16px;">
+      <a href="assets/Ammar_Yasser_Flutter_Developer_CV.pdf" download="Ammar_Yasser_Flutter_Developer_CV.pdf" target="_blank" class="btn btn-cv">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        <span>Download Official CV (PDF)</span>
+      </a>
+      <a href="mailto:ammar.yasser20175@gmail.com" class="btn btn-primary">Email Me Directly</a>
+    </div>
   </div>
 
   <main id="main-content">
@@ -117,7 +156,7 @@
             A Flutter developer experienced in building responsive, maintainable, and API-driven mobile applications using modern Flutter architecture, BLoC/Cubit state management, REST APIs, and local storage.
           </p>
 
-          <!-- Primary CTAs -->
+          <!-- Primary CTAs with CV Download -->
           <div class="hero-actions">
             <a href="#projects" class="btn btn-primary">
               <span>View Projects</span>
@@ -125,6 +164,16 @@
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </a>
+            
+            <a href="assets/Ammar_Yasser_Flutter_Developer_CV.pdf" download="Ammar_Yasser_Flutter_Developer_CV.pdf" target="_blank" class="btn btn-cv">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Download CV</span>
+            </a>
+
             <a href="#contact" class="btn btn-secondary">Contact Me</a>
           </div>
 
@@ -156,7 +205,7 @@
           </div>
         </div>
 
-        <!-- Hero Visual: Flutter Mobile Device Mockup -->
+        <!-- Hero Visual: Flutter Mobile Device Mockup with Interactive Hot Reload Simulator -->
         <div class="hero-visual" aria-hidden="true">
           <div class="mockup-glow-ambient"></div>
           
@@ -170,7 +219,18 @@
             <div class="phone-screen">
               <div class="phone-status-bar">
                 <span>9:41</span>
-                <span>Flutter 3.x · 5G</span>
+                <span>Flutter 3.x · Dart 3</span>
+              </div>
+
+              <!-- Interactive Hot Reload Simulator Toolbar -->
+              <div class="phone-simulator-controls">
+                <button type="button" class="hot-reload-btn" title="Click to simulate Flutter Hot Reload">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                  </svg>
+                  <span>⚡ Hot Reload</span>
+                </button>
+                <span class="devtools-tag">DevTools Active</span>
               </div>
 
               <div class="demo-app-content">
@@ -210,7 +270,7 @@
                   <div class="demo-service-item">
                     <div class="demo-service-info">
                       <div class="demo-service-icon">DI</div>
-                      <span class="demo-service-name">GetIt Dependency Injection</span>
+                      <span class="demo-service-name">GetIt Service Locator</span>
                     </div>
                     <span class="demo-service-status">Ready</span>
                   </div>
@@ -219,7 +279,7 @@
 
               <!-- Bottom Nav bar mockup -->
               <div class="demo-nav-bar">
-                <span class="demo-nav-item active">● Home</span>
+                <span class="demo-nav-item active">● UI</span>
                 <span class="demo-nav-item">● State</span>
                 <span class="demo-nav-item">● Data</span>
               </div>
@@ -247,7 +307,7 @@
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                 <polyline points="22 4 12 14.01 9 11.01"></polyline>
               </svg>
-              <span>BLoC / Cubit States</span>
+              <span>BLoC / Cubit Reactive</span>
             </div>
           </div>
 
@@ -277,7 +337,7 @@
 
         <div class="about-grid">
           
-          <!-- About Description Card -->
+          <!-- About Description Card with Official CV Download Box -->
           <article class="about-card">
             <div>
               <p class="about-lead">
@@ -291,11 +351,36 @@
               </p>
             </div>
 
-            <div style="margin-top: 24px;">
-              <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--flutter-cyan);">
-                // Cairo, Egypt · B2 English (Professional) · Native Arabic
-              </span>
+            <!-- Official Verified CV Download Card -->
+            <div class="about-cv-box">
+              <div class="cv-box-info">
+                <div class="cv-box-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                </div>
+                <div>
+                  <div class="cv-box-title">Ammar Yasser — Official CV</div>
+                  <div class="cv-box-meta">PDF Document · Source of Truth · Updated</div>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <a href="assets/Ammar_Yasser_Flutter_Developer_CV.pdf" download="Ammar_Yasser_Flutter_Developer_CV.pdf" target="_blank" class="btn btn-cv" style="padding: 8px 16px; font-size: 0.8125rem;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  <span>Download CV</span>
+                </a>
+              </div>
             </div>
+
           </article>
 
           <!-- Key Competencies Grid -->
@@ -519,6 +604,44 @@ BlocConsumer&lt;BookingCubit, BookingState&gt;(
           <span>
             <strong>Architectural Approach:</strong> These represent the architectural methodologies, clean design patterns, and engineering technologies I have experience with. Each project is tailored according to its specific scope and technical requirements.
           </span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FLUTTER WIDGET TREE VISUAL BREAKDOWN -->
+    <section class="section widget-tree-section" aria-labelledby="tree-heading">
+      <div class="container">
+        
+        <div class="widget-tree-box">
+          <div class="widget-tree-header">
+            <div>
+              <h3 id="tree-heading" class="widget-tree-title">Flutter Compositional Widget Tree</h3>
+              <p style="font-size: 0.875rem; color: var(--text-secondary); margin-top: 4px;">
+                Demonstrating unidirectional hierarchy and state provision across the widget tree.
+              </p>
+            </div>
+            <span class="brand-badge">Dart 3 &middot; Flutter 3.x</span>
+          </div>
+
+          <div class="widget-nodes-wrapper">
+            <div class="tree-node level-0">
+              <span class="node-type-badge">Root</span>
+              <span><strong>MaterialApp</strong>(theme: AppTheme.dark, routerConfig: appRouter)</span>
+            </div>
+            <div class="tree-node level-1">
+              <span class="node-type-badge">State Injection</span>
+              <span><strong>BlocProvider</strong>&lt;BookingCubit&gt;(create: (_) => sl&lt;BookingCubit&gt;()..fetch())</span>
+            </div>
+            <div class="tree-node level-2">
+              <span class="node-type-badge">Layout Scaffold</span>
+              <span><strong>Scaffold</strong>(appBar: CustomSliverAppBar(), body: ResponsiveLayout())</span>
+            </div>
+            <div class="tree-node level-3">
+              <span class="node-type-badge">Reactive View</span>
+              <span><strong>BlocBuilder</strong>&lt;BookingCubit, BookingState&gt;(builder: (ctx, state) => ListView())</span>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -814,7 +937,7 @@ BlocConsumer&lt;BookingCubit, BookingState&gt;(
                 <div class="mini-phone-screen">
                   <div class="mini-app-bar">
                     <span>Bookly</span>
-                    <span style="color: #38BDF8;">API Live</span>
+                    <span style="color: #0284C7;">API Live</span>
                   </div>
                   <div style="background: rgba(2, 132, 199, 0.2); border-radius: 6px; padding: 6px; margin-bottom: 6px;">
                     <div style="font-weight: 700; color: #38BDF8;">Best Sellers</div>
@@ -875,9 +998,9 @@ BlocConsumer&lt;BookingCubit, BookingState&gt;(
                 <div class="mini-phone-screen">
                   <div class="mini-app-bar">
                     <span>Weather</span>
-                    <span style="color: #38BDF8;">Cairo 28°C</span>
+                    <span style="color: #0284C7;">Cairo 28°C</span>
                   </div>
-                  <div style="background: linear-gradient(135deg, #0284C7, #00D2FF); border-radius: 6px; padding: 8px; margin-bottom: 6px; color: #070913;">
+                  <div style="background: linear-gradient(135deg, #0284C7, #00D2FF); border-radius: 6px; padding: 8px; margin-bottom: 6px; color: #FFFFFF;">
                     <div style="font-size: 1.125rem; font-weight: 800;">28°C</div>
                     <div style="font-weight: 600; font-size: 0.5625rem;">Sunny &amp; Clear Sky</div>
                   </div>
@@ -1385,6 +1508,15 @@ BlocConsumer&lt;BookingCubit, BookingState&gt;(
                 <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
               </svg>
             </a>
+
+            <a href="assets/Ammar_Yasser_Flutter_Developer_CV.pdf" download="Ammar_Yasser_Flutter_Developer_CV.pdf" target="_blank" class="btn btn-cv">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Download CV (PDF)</span>
+            </a>
             
             <button class="copy-email-btn" type="button" aria-label="Copy email address to clipboard">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1422,6 +1554,7 @@ BlocConsumer&lt;BookingCubit, BookingState&gt;(
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#architecture">Architecture</a>
+        <a href="assets/Ammar_Yasser_Flutter_Developer_CV.pdf" download="Ammar_Yasser_Flutter_Developer_CV.pdf" target="_blank" style="color: var(--flutter-sky); font-weight: 600;">Download CV</a>
         <a href="#contact">Contact</a>
         <button class="back-to-top" aria-label="Back to top">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">

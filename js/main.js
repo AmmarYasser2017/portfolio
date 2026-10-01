@@ -1,18 +1,81 @@
 /**
  * AMMAR YASSER - FLUTTER DEVELOPER PORTFOLIO
- * Interactive logic & state management for portfolio UI
+ * Interactive logic, Dark/Light mode theme switching & Flutter simulator
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initThemeToggle();
   initNavbar();
   initMobileMenu();
   initScrollSpy();
   initProjectFilters();
   initArchitectureInspector();
   initTechMap();
+  initFlutterSimulator();
   initCopyEmail();
   initBackToTop();
 });
+
+/* --- Dark / Light Mode Theme Switching --- */
+function initThemeToggle() {
+  const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+  
+  // Retrieve saved preference or default to dark
+  const savedTheme = localStorage.getItem('theme');
+  const initialTheme = savedTheme ? savedTheme : (prefersDark.matches ? 'dark' : 'light');
+  
+  setTheme(initialTheme);
+
+  themeToggleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      setTheme(newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+  });
+
+  // Listen to OS theme changes if user hasn't explicitly set a preference
+  prefersDark.addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+      setTheme(e.matches ? 'dark' : 'light');
+    }
+  });
+}
+
+function setTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
+  
+  themeToggleBtns.forEach(btn => {
+    if (theme === 'dark') {
+      btn.innerHTML = `
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      `;
+      btn.setAttribute('title', 'Switch to Light Mode');
+      btn.setAttribute('aria-label', 'Switch to Light Mode');
+    } else {
+      btn.innerHTML = `
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      `;
+      btn.setAttribute('title', 'Switch to Dark Mode');
+      btn.setAttribute('aria-label', 'Switch to Dark Mode');
+    }
+  });
+}
 
 /* --- Header Scroll Effect --- */
 function initNavbar() {
@@ -315,7 +378,6 @@ function initArchitectureInspector() {
     });
   });
 
-  // Initialize with 'ui'
   updateInspector('ui');
 }
 
@@ -397,6 +459,39 @@ function initTechMap() {
   });
 }
 
+/* --- Flutter Hot Reload & Interactive Phone Simulator --- */
+function initFlutterSimulator() {
+  const hotReloadBtn = document.querySelector('.hot-reload-btn');
+  const phoneScreen = document.querySelector('.phone-screen');
+  const statusSpan = document.querySelector('.demo-service-status');
+  const cubitTag = document.querySelector('.demo-cubit-tag');
+
+  if (!hotReloadBtn || !phoneScreen) return;
+
+  let stateCounter = 0;
+  const states = [
+    { cubit: 'Cubit: Initial', status: '200 OK' },
+    { cubit: 'Cubit: Loading...', status: 'Syncing' },
+    { cubit: 'Cubit: Success', status: 'Updated' },
+    { cubit: 'Cubit: Cached', status: 'Offline Mode' }
+  ];
+
+  hotReloadBtn.addEventListener('click', () => {
+    // Trigger animation
+    phoneScreen.classList.remove('hot-reloading');
+    void phoneScreen.offsetWidth; // trigger reflow
+    phoneScreen.classList.add('hot-reloading');
+
+    stateCounter = (stateCounter + 1) % states.length;
+    if (cubitTag) cubitTag.textContent = states[stateCounter].cubit;
+    if (statusSpan) statusSpan.textContent = states[stateCounter].status;
+
+    setTimeout(() => {
+      phoneScreen.classList.remove('hot-reloading');
+    }, 1200);
+  });
+}
+
 /* --- Copy Email to Clipboard --- */
 function initCopyEmail() {
   const copyBtn = document.querySelector('.copy-email-btn');
@@ -411,7 +506,6 @@ function initCopyEmail() {
       if (navigator.clipboard && navigator.clipboard.writeText) {
         await navigator.clipboard.writeText(email);
       } else {
-        // Fallback for older browsers
         const textarea = document.createElement('textarea');
         textarea.value = email;
         textarea.style.position = 'fixed';

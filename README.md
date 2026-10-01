@@ -2,6 +2,8 @@
 
 A modern, high-performance developer portfolio showcasing my work as a **Flutter Developer & Mobile Application Developer**. Designed specifically for recruiters, hiring managers, software companies, and freelance opportunities.
 
+Features **Dark Mode & Light Mode**, an interactive **Flutter Architecture & Hot Reload Simulator**, **Widget Tree inspector**, and direct access to my **Official Resume / CV**.
+
 ---
 
 ## 🚀 Live Overview & Core Focus
@@ -14,6 +16,18 @@ This portfolio focuses exclusively on mobile engineering capabilities, clean arc
 - **Email:** [ammar.yasser20175@gmail.com](mailto:ammar.yasser20175@gmail.com)
 - **LinkedIn:** [linkedin.com/in/ammar-yasser-13a705226](https://linkedin.com/in/ammar-yasser-13a705226)
 - **GitHub:** [github.com/AmmarYasser2017](https://github.com/AmmarYasser2017)
+- **Resume:** [Download Official CV (PDF)](assets/Ammar_Yasser_Flutter_Developer_CV.pdf)
+
+---
+
+## ⚡ Key Highlights & Features
+
+- **Dark & Light Modes:** Seamless theme switching with high-contrast accessibility and local storage persistence.
+- **Interactive Flutter Hot Reload Simulator:** Test simulated widget rebuilding and reactive Cubit state transitions.
+- **Flutter Compositional Widget Tree:** Interactive visual hierarchy breakdown (`MaterialApp` → `Scaffold` → `BlocProvider` → `BlocBuilder`).
+- **Architecture Inspector:** In-depth breakdown of Clean Architecture, MVVM, SOLID, Repository Pattern, and code snippets.
+- **Project Filter:** Toggle seamlessly between production team applications and personal offline-first projects.
+- **Direct CV Download:** Accessible from the sticky navbar, hero section, about card, and contact footer.
 
 ---
 
@@ -61,16 +75,17 @@ This portfolio focuses exclusively on mobile engineering capabilities, clean arc
 ## 📂 Project Structure
 
 ```text
-├── index.html              # Main semantic HTML5 document
+├── index.html                                 # Main semantic HTML5 document with Dark/Light theme
 ├── css/
-│   └── styles.css          # Design system, CSS tokens, responsive layout, animations
+│   └── styles.css                             # CSS variables for Dark/Light modes, Flutter styling
 ├── js/
-│   └── main.js             # Interactive architecture inspector, project filtering, tech map
+│   └── main.js                                # Theme toggle, Hot Reload simulator, architecture inspector
 ├── assets/
-│   └── favicon.svg         # Flutter brand-inspired vector icon
-├── .gitignore              # Ignored files
-├── Ammar_Yasser_CV (1).pdf # Source-of-truth developer resume
-└── README.md               # Repository documentation
+│   ├── favicon.svg                            # Flutter-inspired SVG icon
+│   └── Ammar_Yasser_Flutter_Developer_CV.pdf  # Downloadable verified CV (PDF)
+├── .gitignore                                 # Git ignored patterns
+├── Ammar_Yasser_CV (1).pdf                    # Original source CV
+└── README.md                                  # Repository documentation
 ```
 
 ---
@@ -79,12 +94,7 @@ This portfolio focuses exclusively on mobile engineering capabilities, clean arc
 
 To view the portfolio locally:
 
-1. Clone or download this repository:
-   ```bash
-   git clone https://github.com/AmmarYasser2017/portfolio.git
-   cd portfolio
-   ```
-2. Open `index.html` directly in your favorite browser, or serve it with any static server:
+1. Open `index.html` directly in your favorite browser, or serve it with any static server:
    ```bash
    # Python 3
    python -m http.server 8000
@@ -92,6 +102,7 @@ To view the portfolio locally:
    # Or using npx serve
    npx serve .
    ```
+2. Toggle between **Dark Mode** and **Light Mode** using the theme switch in the top-right header!
 
 ---
 
