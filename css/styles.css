@@ -706,8 +706,9 @@ ul, ol {
 
 .flutter-phone-frame {
   position: relative;
-  width: 320px;
-  height: 620px;
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 320 / 620;
   background: var(--phone-frame-bg);
   border-radius: 46px;
   padding: 12px;
@@ -2476,8 +2477,38 @@ ul, ol {
   border-radius: var(--radius-md);
 }
 
-/* Responsive Rules */
+/* ==========================================================================
+   RESPONSIVE DESIGN SYSTEM
+   Breakpoints: 1200px · 1024px · 768px · 480px · 360px
+   ========================================================================== */
+
+/* --- Large Tablets & Small Desktops (≤ 1200px) --- */
+@media (max-width: 1200px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .hero-grid {
+    gap: 40px;
+  }
+
+  .tech-map-container {
+    padding: 28px;
+  }
+
+  .contact-card-main {
+    padding: 48px 36px;
+  }
+}
+
+/* --- Tablets (≤ 1024px) --- */
 @media (max-width: 1024px) {
+  .hero-section {
+    min-height: auto;
+    padding-bottom: 60px;
+  }
+
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 48px;
@@ -2488,6 +2519,10 @@ ul, ol {
     align-items: center;
   }
 
+  .hero-description {
+    max-width: 100%;
+  }
+
   .hero-actions {
     justify-content: center;
   }
@@ -2496,6 +2531,25 @@ ul, ol {
     justify-content: center;
   }
 
+  /* Hero phone mockup: center and scale down */
+  .hero-visual {
+    max-width: 340px;
+    margin: 0 auto;
+  }
+
+  .floating-tech-card {
+    left: -20px;
+    bottom: 15px;
+    padding: 10px 14px;
+  }
+
+  .floating-state-card {
+    right: -15px;
+    top: 30px;
+    padding: 10px 12px;
+  }
+
+  /* Architecture: stack layers and inspector */
   .arch-visual-container {
     grid-template-columns: 1fr;
   }
@@ -2504,22 +2558,54 @@ ul, ol {
     position: static;
   }
 
+  /* Skills: 2 columns on tablet */
   .skills-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  /* Workflow: 3 columns on tablet */
   .workflow-steps-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-}
 
-@media (max-width: 768px) {
-  .section {
-    padding-top: 70px;
-    padding-bottom: 70px;
+  /* Projects: keep 2-col but reduce gap */
+  .projects-grid {
+    gap: 24px;
   }
 
-  .nav-links, .nav-actions .nav-cv-btn {
+  .project-card-body {
+    padding: 22px;
+  }
+
+  /* Contact: 2 columns on tablet */
+  .contact-channels-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* --- Mobile Landscape & Small Tablets (≤ 768px) --- */
+@media (max-width: 768px) {
+  /* Reduce section spacing */
+  .section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .section-header {
+    margin-bottom: 36px;
+  }
+
+  .section-title {
+    font-size: clamp(1.625rem, 5vw, 2.25rem);
+  }
+
+  .section-subtitle {
+    font-size: 0.9375rem;
+  }
+
+  /* Navigation: show hamburger, hide desktop nav */
+  .nav-links,
+  .nav-actions .nav-cv-btn {
     display: none;
   }
 
@@ -2531,30 +2617,258 @@ ul, ol {
     display: flex;
   }
 
+  /* Hero section adjustments */
+  .hero-section {
+    padding-top: calc(var(--nav-height) + 24px);
+    padding-bottom: 48px;
+  }
+
+  .hero-name {
+    font-size: clamp(2.25rem, 7vw, 3rem);
+  }
+
+  .hero-title {
+    font-size: clamp(1.0625rem, 3vw, 1.375rem);
+    justify-content: center;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+    margin-bottom: 24px;
+  }
+
+  .hero-actions {
+    margin-bottom: 28px;
+  }
+
+  .hero-status-pill {
+    font-size: 0.75rem;
+    padding: 5px 12px;
+    margin-bottom: 18px;
+  }
+
+  /* Phone mockup: scale for mobile */
+  .flutter-phone-frame {
+    max-width: 260px;
+  }
+
+  .floating-tech-card {
+    left: -5px;
+    bottom: 5px;
+    padding: 8px 12px;
+    font-size: 0.75rem;
+  }
+
+  .floating-tech-title {
+    font-size: 0.75rem;
+  }
+
+  .floating-tech-desc {
+    font-size: 0.625rem;
+  }
+
+  .floating-state-card {
+    right: -5px;
+    top: 15px;
+    padding: 8px 12px;
+  }
+
+  .floating-state-badge {
+    font-size: 0.6875rem;
+  }
+
+  /* About section */
   .about-grid {
     grid-template-columns: 1fr;
+    gap: 24px;
   }
 
+  .about-card {
+    padding: 24px;
+  }
+
+  .about-lead {
+    font-size: 1.0625rem;
+  }
+
+  .about-cv-box {
+    padding: 14px 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* Architecture section */
+  .arch-layer-card {
+    padding: 12px 16px;
+  }
+
+  .layer-name {
+    font-size: 0.875rem;
+  }
+
+  .layer-tech {
+    font-size: 0.6875rem;
+  }
+
+  .arch-inspector {
+    padding: 24px;
+  }
+
+  .inspector-title {
+    font-size: 1.0625rem;
+  }
+
+  .inspector-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .arch-code-preview {
+    font-size: 0.6875rem;
+    padding: 12px;
+  }
+
+  .arch-disclaimer-note {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+    padding: 14px 16px;
+    font-size: 0.8125rem;
+  }
+
+  /* Widget Tree */
+  .widget-tree-box {
+    padding: 20px;
+  }
+
+  .widget-tree-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .widget-nodes-wrapper {
+    font-size: 0.6875rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tree-node {
+    padding: 8px 10px;
+    min-width: max-content;
+  }
+
+  .tree-node.level-1 { margin-left: 14px; }
+  .tree-node.level-2 { margin-left: 28px; }
+  .tree-node.level-3 { margin-left: 42px; }
+
+  .node-type-badge {
+    font-size: 0.5625rem;
+    padding: 2px 5px;
+  }
+
+  /* Workflow */
+  .workflow-steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .workflow-card {
+    padding: 16px 14px;
+  }
+
+  /* Projects */
   .projects-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 
+  .project-mockup-wrapper {
+    min-height: 220px;
+    padding: 24px 16px;
+  }
+
+  .project-card-body {
+    padding: 20px;
+  }
+
+  .project-title {
+    font-size: 1.1875rem;
+  }
+
+  .project-desc {
+    font-size: 0.875rem;
+  }
+
+  .project-card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  /* Filter bar */
+  .project-filter-bar {
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  .filter-btn {
+    padding: 7px 14px;
+    font-size: 0.8125rem;
+  }
+
+  /* Skills */
   .skills-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 
-  .workflow-steps-grid {
-    grid-template-columns: 1fr;
+  .skill-category-card {
+    padding: 20px;
   }
 
-  .contact-channels-grid {
-    grid-template-columns: repeat(2, 1fr);
+  /* Technology Map */
+  .tech-map-container {
+    padding: 20px;
+    border-radius: var(--radius-lg);
   }
 
-  .contact-card-main {
-    padding: 36px 20px;
+  .tech-flow-track {
+    gap: 8px;
+    margin-bottom: 24px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    padding-bottom: 8px;
+    scrollbar-width: thin;
   }
 
+  .tech-node-btn {
+    padding: 8px 14px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .node-arrow {
+    font-size: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .tech-node-details {
+    padding: 18px;
+  }
+
+  .node-detail-title {
+    font-size: 1rem;
+  }
+
+  .node-detail-role {
+    font-size: 0.875rem;
+  }
+
+  /* Experience / Timeline */
   .timeline-container::before {
     left: 15px;
   }
@@ -2564,40 +2878,121 @@ ul, ol {
     height: 32px;
   }
 
+  .timeline-dot svg {
+    width: 14px;
+    height: 14px;
+  }
+
   .timeline-item {
     gap: 16px;
   }
 
-  .flutter-phone-frame {
-    width: 290px;
-    height: 560px;
+  .timeline-card {
+    padding: 20px;
   }
 
-  .floating-tech-card {
-    left: -10px;
-    bottom: 10px;
+  .timeline-role {
+    font-size: 1.0625rem;
   }
 
-  .floating-state-card {
-    right: -10px;
-    top: 20px;
+  .timeline-bullet-item {
+    font-size: 0.875rem;
   }
 
+  /* Education */
+  .edu-card {
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .edu-icon-box {
+    width: 44px;
+    height: 44px;
+  }
+
+  .edu-icon-box svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .edu-degree {
+    font-size: 1.0625rem;
+  }
+
+  /* Contact */
+  .contact-card-main {
+    padding: 32px 20px;
+    border-radius: var(--radius-lg);
+  }
+
+  .contact-title {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+
+  .contact-subtitle {
+    font-size: 0.9375rem;
+    margin-bottom: 28px;
+  }
+
+  .contact-channels-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .channel-btn {
+    padding: 16px 12px;
+    gap: 8px;
+  }
+
+  .channel-val {
+    font-size: 0.6875rem;
+  }
+
+  .contact-action-box {
+    gap: 12px;
+  }
+
+  .contact-action-box .btn {
+    padding: 11px 20px;
+    font-size: 0.875rem;
+  }
+
+  /* Footer */
   .footer-inner {
     flex-direction: column;
     text-align: center;
+    gap: 16px;
   }
 
-  .tree-node.level-1 { margin-left: 14px; }
-  .tree-node.level-2 { margin-left: 28px; }
-  .tree-node.level-3 { margin-left: 42px; }
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .site-footer {
+    padding: 28px 0;
+  }
 }
 
+/* --- Mobile Portrait (≤ 480px) --- */
 @media (max-width: 480px) {
-  .contact-channels-grid {
-    grid-template-columns: 1fr;
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
+  .section {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .section-header {
+    margin-bottom: 28px;
+  }
+
+  /* Hero: full-width buttons */
   .hero-actions {
     flex-direction: column;
     width: 100%;
@@ -2605,6 +3000,39 @@ ul, ol {
 
   .hero-actions .btn {
     width: 100%;
+    justify-content: center;
+  }
+
+  .hero-socials {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Phone mockup: smaller on tiny screens */
+  .hero-visual {
+    max-width: 280px;
+  }
+
+  .flutter-phone-frame {
+    max-width: 220px;
+  }
+
+  .floating-tech-card,
+  .floating-state-card {
+    display: none;
+  }
+
+  /* About */
+  .about-card {
+    padding: 20px;
+  }
+
+  .about-lead {
+    font-size: 1rem;
+  }
+
+  .about-text {
+    font-size: 0.875rem;
   }
 
   .about-stats-grid {
@@ -2615,14 +3043,400 @@ ul, ol {
     flex-direction: column;
     align-items: flex-start;
   }
+
+  .cv-box-info {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* Architecture */
+  .layer-info {
+    gap: 10px;
+  }
+
+  .layer-badge-num {
+    width: 24px;
+    height: 24px;
+    font-size: 0.6875rem;
+  }
+
+  .arch-connector {
+    font-size: 0.625rem;
+  }
+
+  /* Workflow */
+  .workflow-steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Widget tree: tighter indentation */
+  .tree-node.level-1 { margin-left: 10px; }
+  .tree-node.level-2 { margin-left: 20px; }
+  .tree-node.level-3 { margin-left: 30px; }
+
+  /* Project cards */
+  .project-mockup-wrapper {
+    min-height: 180px;
+    padding: 20px 12px;
+  }
+
+  .mini-phone-frame {
+    width: 170px;
+    height: 210px;
+  }
+
+  .project-card-body {
+    padding: 16px;
+  }
+
+  .project-meta-strip {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .project-title {
+    font-size: 1.0625rem;
+  }
+
+  .project-desc {
+    font-size: 0.8125rem;
+    margin-bottom: 14px;
+  }
+
+  .tech-badges-list {
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .tech-badge {
+    font-size: 0.6875rem;
+    padding: 3px 8px;
+  }
+
+  /* Filter bar: wrap more naturally */
+  .project-filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-btn {
+    text-align: center;
+  }
+
+  /* Skills */
+  .skill-category-card {
+    padding: 18px;
+  }
+
+  .skill-item-pill {
+    padding: 7px 10px;
+    font-size: 0.8125rem;
+  }
+
+  /* Contact */
+  .contact-channels-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-action-box {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .contact-action-box .btn,
+  .contact-action-box .copy-email-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Timeline */
+  .timeline-card {
+    padding: 16px;
+  }
+
+  .timeline-role {
+    font-size: 0.9375rem;
+  }
+
+  .timeline-header {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .timeline-date {
+    align-self: flex-start;
+  }
+
+  .timeline-bullet-item {
+    font-size: 0.8125rem;
+  }
+
+  /* Education */
+  .edu-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 16px;
+  }
+
+  /* Navbar brand */
+  .brand-badge {
+    display: none;
+  }
+
+  .brand-name {
+    font-size: 1rem;
+  }
 }
 
-/* Reduced Motion Mode */
+/* --- Extra Small Devices (≤ 360px) --- */
+@media (max-width: 360px) {
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .hero-name {
+    font-size: 2rem;
+  }
+
+  .hero-title {
+    font-size: 0.9375rem;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .hero-title .separator {
+    display: none;
+  }
+
+  .hero-description {
+    font-size: 0.9375rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    padding: 11px 20px;
+    font-size: 0.875rem;
+  }
+
+  .arch-layer-card {
+    padding: 10px 12px;
+  }
+
+  .layer-name {
+    font-size: 0.8125rem;
+  }
+
+  .layer-tech {
+    font-size: 0.625rem;
+  }
+
+  .arch-inspector {
+    padding: 16px;
+  }
+
+  .inspector-title {
+    font-size: 1rem;
+  }
+
+  .inspector-body {
+    font-size: 0.8125rem;
+  }
+
+  .resp-item {
+    font-size: 0.8125rem;
+  }
+
+  .contact-title {
+    font-size: 1.375rem;
+  }
+
+  .contact-subtitle {
+    font-size: 0.875rem;
+  }
+
+  .channel-btn {
+    padding: 14px 10px;
+  }
+
+  .channel-label {
+    font-size: 0.75rem;
+  }
+
+  .timeline-container::before {
+    left: 12px;
+  }
+
+  .timeline-dot {
+    width: 26px;
+    height: 26px;
+  }
+
+  .timeline-dot svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .timeline-item {
+    gap: 12px;
+  }
+}
+
+/* ==========================================================================
+   TOUCH DEVICE OPTIMIZATIONS
+   ========================================================================== */
+@media (hover: none) and (pointer: coarse) {
+  /* Remove hover-only effects on touch devices */
+  .project-card:hover {
+    transform: none;
+  }
+
+  .skill-category-card:hover {
+    transform: none;
+  }
+
+  .workflow-card:hover {
+    transform: none;
+  }
+
+  .stat-item:hover {
+    transform: none;
+  }
+
+  .channel-btn:hover {
+    transform: none;
+  }
+
+  .flutter-phone-frame:hover {
+    transform: none;
+  }
+
+  .project-card:hover .mini-phone-frame {
+    transform: none;
+  }
+
+  /* Ensure minimum touch target sizes (44×44px) */
+  .nav-link {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .social-icon-btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .filter-btn {
+    min-height: 44px;
+  }
+
+  .tech-node-btn {
+    min-height: 44px;
+  }
+
+  .back-to-top {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+/* ==========================================================================
+   LANDSCAPE MOBILE ORIENTATION
+   ========================================================================== */
+@media (max-width: 768px) and (orientation: landscape) {
+  .hero-section {
+    min-height: auto;
+    padding-top: calc(var(--nav-height) + 16px);
+    padding-bottom: 32px;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr 1fr;
+    text-align: left;
+    gap: 24px;
+  }
+
+  .hero-content {
+    align-items: flex-start;
+  }
+
+  .hero-actions {
+    justify-content: flex-start;
+  }
+
+  .hero-socials {
+    justify-content: flex-start;
+  }
+
+  .hero-visual {
+    max-width: 220px;
+  }
+
+  .floating-tech-card,
+  .floating-state-card {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   REDUCED MOTION MODE
+   ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .floating-tech-card,
+  .floating-state-card {
+    animation: none;
+  }
+
+  .status-dot {
+    animation: none;
+  }
+}
+
+/* ==========================================================================
+   PRINT STYLES
+   ========================================================================== */
+@media print {
+  .site-header,
+  .mobile-nav-drawer,
+  .mobile-nav-toggle,
+  .back-to-top,
+  .toast-notice,
+  .hero-visual,
+  .floating-tech-card,
+  .floating-state-card,
+  .hot-reload-btn,
+  .phone-simulator-controls {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  .section {
+    padding-top: 32px;
+    padding-bottom: 32px;
+    page-break-inside: avoid;
+  }
+
+  .project-card,
+  .skill-category-card,
+  .timeline-card {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ddd;
   }
 }
